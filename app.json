@@ -146,7 +146,7 @@
     },
     "QUOTES_API_TOKEN": {
       "description": "API for quotes module get it from http://antiddos.systems",
-      "value": ""
+      "required": false
     },
     "TELEGRAPH_SHORT_NAME":{
     "description": "to set telegraph author",
