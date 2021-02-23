@@ -17,9 +17,9 @@ async def hazmat(event):
     if not reply_message.media:
         await event.edit("`Word can destroy anything Capt!...`")
         return
-    chat = "@hazmat_suit_bot"
     await event.edit("```Suit Up Capt!, We are going to purge some virus...```")
     async with bot.conversation("@hazmat_suit_bot") as conv:
+        chat = "@hazmat_suit_bot"
         try:
             response = conv.wait_event(
                 events.NewMessage(
@@ -33,7 +33,11 @@ async def hazmat(event):
         else:
             file = response
             await event.delete()
-            await event.client.send_message(event.chat_id, response.message, reply_to=event.message.reply_to_msg_id)
+            await event.client.send_message(
+                event.chat_id,
+                file.message,
+                reply_to=event.message.reply_to_msg_id,
+            )
 
 CMD_HELP.update({
     "hazmat":

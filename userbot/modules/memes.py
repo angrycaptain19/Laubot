@@ -697,17 +697,15 @@ async def slap(replied_user, event):
     throw = choice(THROW)
     where = choice(WHERE)
 
-    caption = "..." + temp.format(
+    return "..." + temp.format(
         victim=slapped, item=item, hits=hit, throws=throw, where=where)
-
-    return caption
 
 
 @register(outgoing=True, pattern="^-_-$", ignore_unsafe=True)
 async def lol(lel):
     """ Ok... """
     okay = "-_-"
-    for i in range(10):
+    for _ in range(10):
         okay = okay[:-1] + "_-"
         await lel.edit(okay)
 
@@ -715,7 +713,7 @@ async def lol(lel):
 @register(outgoing=True, pattern=r"^\.(yes|no|maybe|decide)$")
 async def decide(event):
     decision = event.pattern_match.group(1).lower()
-    message_id = event.reply_to_msg_id if event.reply_to_msg_id else None
+    message_id = event.reply_to_msg_id or None
     if decision != "decide":
         r = requests.get(f"https://yesno.wtf/api?force={decision}").json()
     else:
@@ -730,7 +728,7 @@ async def decide(event):
 @register(outgoing=True, pattern="^;_;$", ignore_unsafe=True)
 async def fun(e):
     t = ";_;"
-    for j in range(10):
+    for _ in range(10):
         t = t[:-1] + "_;"
         await e.edit(t)
 
@@ -778,10 +776,7 @@ async def copypasta(cp_e):
         elif owo.lower() == b_char:
             reply_text += "🅱️"
         else:
-            if bool(getrandbits(1)):
-                reply_text += owo.upper()
-            else:
-                reply_text += owo.lower()
+            reply_text += owo.upper() if bool(getrandbits(1)) else owo.lower()
     reply_text += choice(EMOJIS)
     await cp_e.edit(reply_text)
 
@@ -789,7 +784,7 @@ async def copypasta(cp_e):
 @register(outgoing=True, pattern=r"^\.vapor(?: |$)(.*)")
 async def vapor(vpr):
     """ Vaporize everything! """
-    reply_text = list()
+    reply_text = []
     textx = await vpr.get_reply_message()
     message = vpr.pattern_match.group(1)
     if message:
@@ -832,7 +827,7 @@ async def stretch(stret):
 @register(outgoing=True, pattern=r"^\.zal(?: |$)(.*)")
 async def zal(zgfy):
     """ Invoke the feeling of chaos. """
-    reply_text = list()
+    reply_text = []
     textx = await zgfy.get_reply_message()
     message = zgfy.pattern_match.group(1)
     if message:
@@ -849,7 +844,7 @@ async def zal(zgfy):
             reply_text.append(charac)
             continue
 
-        for _ in range(0, 3):
+        for _ in range(3):
             rand = randint(0, 2)
 
             if rand == 0:
@@ -951,7 +946,7 @@ async def pressf(f):
 @register(outgoing=True, pattern="^Oof$")
 async def Oof(e):
     t = "Oof"
-    for j in range(16):
+    for _ in range(16):
         t = t[:-1] + "of"
         await e.edit(t)
 
@@ -959,7 +954,7 @@ async def Oof(e):
 @register(outgoing=True, pattern=r"^\.oem$")
 async def oem(e):
     t = "Oem"
-    for j in range(16):
+    for _ in range(16):
         t = t[:-1] + "em"
         await e.edit(t)
 
@@ -967,7 +962,7 @@ async def oem(e):
 @register(outgoing=True, pattern=r"^\.Oem$")
 async def Oem(e):
     t = "Oem"
-    for j in range(16):
+    for _ in range(16):
         t = t[:-1] + "em"
         await e.edit(t)
 
@@ -981,7 +976,7 @@ async def iqless(e):
 async def moon(event):
     deq = deque(list("🌗🌘🌑🌒🌓🌔🌕🌖"))
     try:
-        for x in range(32):
+        for _ in range(32):
             await sleep(0.1)
             await event.edit("".join(deq))
             deq.rotate(1)
@@ -993,7 +988,7 @@ async def moon(event):
 async def clock(event):
     deq = deque(list("🕙🕘🕗🕖🕕🕔🕓🕒🕑🕐🕛"))
     try:
-        for x in range(32):
+        for _ in range(32):
             await sleep(0.1)
             await event.edit("".join(deq))
             deq.rotate(1)
@@ -1004,7 +999,7 @@ async def clock(event):
 @register(outgoing=True, pattern=r"^\.mock(?: |$)(.*)")
 async def spongemocktext(mock):
     """ Do it and find the real fun. """
-    reply_text = list()
+    reply_text = []
     textx = await mock.get_reply_message()
     message = mock.pattern_match.group(1)
     if message:

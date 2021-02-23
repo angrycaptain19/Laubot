@@ -19,9 +19,7 @@ from pylast import User
 
 @register(outgoing=True, pattern=r"^\.lyrics (?:(now)|(.*) - (.*))")
 async def lyrics(lyric):
-    if r"-" in lyric.text:
-        pass
-    else:
+    if r"-" not in lyric.text:
         return await lyric.edit("`Aborted: Please use '-' as divider for **<artist> "
                                 "& <song name>**`\neg: `Nicki Minaj - Super Bass`")
 
@@ -65,13 +63,13 @@ async def lyrics(lyric):
             reply_to=lyric.id,
         )
         os.remove("lyrics.txt")
-        return True
     else:
         await lyric.edit(
             f"**Search query**:\n`{artist}` - `{song}`"
             f"\n\n```{songs.lyrics}```"
         )
-        return True
+
+    return True
 
 
 CMD_HELP.update({
