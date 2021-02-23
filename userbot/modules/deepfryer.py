@@ -40,9 +40,7 @@ async def _(fry):
                     m,
                     reply_to=msg.id)
                 r = await conv.get_response()
-                response = await conv.get_response()
-            else:
-                response = await conv.get_response()
+            response = await conv.get_response()
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
@@ -73,11 +71,6 @@ async def _(fry):
                     [msg.id, response.id, r.id, msg_level.id])
     await fry.delete()
     return os.remove(downloaded_file_name)
-
-    if not data or data is None:
-        return False
-    else:
-        return data
 
 CMD_HELP.update({
     "deepfry":

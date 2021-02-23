@@ -21,11 +21,11 @@ from userbot.events import register
 
 
 async def subprocess_run(cmd):
-    reply = ""
     subproc = await asyncSubprocess(cmd, stdout=asyncPIPE, stderr=asyncPIPE)
     result = await subproc.communicate()
     exitCode = subproc.returncode
     if exitCode != 0:
+        reply = ""
         reply += (
             '**An error was detected while running subprocess.**\n'
             f'exitCode : `{exitCode}`\n'
