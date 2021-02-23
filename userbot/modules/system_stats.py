@@ -161,7 +161,7 @@ async def amireallyalive(alive):
     output = ("`"
               "Userbot Service is Running!!! \n\n"
               f"################################### \n"
-              f"Telethon : {version.__version__} \n"
+              f"Bot	 : Beta \n"
               f"Python   : {python_version()} \n"
               f"Uptime   : {uptime} \n"
               f"User     : {DEFAULTUSER} \n"

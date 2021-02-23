@@ -69,8 +69,8 @@ async def permitpm(event):
 
                 if COUNT_PM[event.chat_id] > 4:
                     await event.respond(
-                        "`You were spamming my Mastor's PM, which I didn't like.`\n"
-                        "`You have been BLOCKED and reported as SPAM, until further notice.`"
+                        "`You were spamming my Senpai's PM, which I didn't like.`\n"
+                        "`You have been BLOCKED and reported as spam, until further notice.`"
                     )
 
                     try:
